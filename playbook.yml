@@ -1,0 +1,57 @@
+#
+# Ansible Playbook (for LAMP)
+#
+- hosts: dev-servers
+  sudo: yes
+  vars:
+    # 変数を設定できます
+    mysql_root_password: "hogehoge" # MySQL root パスワード
+  tasks:
+    #  
+    - name: iptables stopped
+      service: name=iptables state=stopped
+    # CentOS 6.6 で yum が使えない不具合を直すパッチです
+    # ref: http://knowledge.sakura.ad.jp/tech/3116/
+    - name: yum.repos.d/CentOS-Base.repo is fixed
+      replace: dest=/etc/yum.repos.d/CentOS-Base.repo regexp="\$releasever" replace="6"
+    # Apache をインストールして再起動します
+    - name: install Apache
+      yum: name={{item}} state=installed
+      with_items:
+       - httpd
+      notify:
+       - restart apache
+    # MySQL をインストールして再起動, rootパスワードを設定します
+    - name: install MySQL
+      yum: name={{item}} state=installed
+      with_items:
+       - mysql
+       - mysql-server
+       - mysql-devel
+      notify:
+       - mysql setup 
+       - mysql set password
+    # PHP をインストールして Apache を再起動します
+    - name: install PHP
+      yum: name={{item}} state=installed
+      with_items:
+       - php
+       - php-devel
+       - php-mbstring
+       - php-mysql
+      notify:
+       - restart apache
+    # その他必要なパッケージがあればここに追加します。ここでは Git を入れています
+    - name: other
+      yum: name={{item}} state=installed
+      with_items:
+       - git
+
+  handlers:
+    - name: restart apache
+      service: name=httpd state=restarted enabled=yes
+    - name: mysql setup
+      service: name=mysqld state=started enabled=yes
+    - name: mysql set password
+      command: mysqladmin -u root password "{{ mysql_root_password }}"
+
