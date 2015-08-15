@@ -99,20 +99,20 @@ $ ansible -i hosts all -a 'uname -a'
 192.168.33.10
 ```
 続いて LAMP 環境を構築するための Playbook を作成します。Playbook は Ansible にさせたいことを記述するファイルで、これの作成が本作業の肝になります。
-```
-ここに作った Playbook をはりつけるよ！
-```
+
+※ 内容は playbook.yml を見てください
+
 できあがった Playbook の文法チェックをします。
 ```
-ansible-playbook -i hosts playbook.yml --syntax-check
+$ ansible-playbook -i hosts playbook.yml --syntax-check
 ```
 テスト実行もできます。
 ```
-ansible-playbook -i hosts playbook.yml --check
+$ ansible-playbook -i hosts playbook.yml --check
 ```
 いよいよ Playbook を実行します。
 ```
-ansible-playbook -i hosts playbook.yml
+$ ansible-playbook -i hosts playbook.yml
 ```
 ```
 PLAY [dev-servers] ************************************************************
@@ -155,13 +155,14 @@ Webサーバが動いているか http://192.168.33.10/ にアクセスして確
 
 MySQL に接続できるか見てみます。パスワードは playbook.yml で設定したものです。
 ```
-vagrant ssh
-mysql -uroot -p
+$ vagrant ssh
+# mysql -uroot -p
 ```
 
-PHP の動作確認
-
-TODO できれば git リポジトリから php プロジェクトを落としてくるところまでやりたい。projectに応じたカスタマイズの仕方も。serverspec は… まあ余裕があれば…
+## TODO
+- PHP の動作確認 (優先度高)
+- projectに応じたカスタマイズ
+- serverspec まあ…余裕があれば…
 
 ## 作成者
 Naoko Yamazaki <yamazaki.n@opst.co.jp>
