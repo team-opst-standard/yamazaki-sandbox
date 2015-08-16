@@ -159,10 +159,22 @@ $ vagrant ssh
 # mysql -uroot -p
 ```
 
+PHP の動作確認をします。
+```
+vagrant ssh
+sudo vi /var/www/html/test.php
+```
+```
+<?php phpinfo(); ?>
+```
+```
+sudo chown apache:apache /var/www/html/test.php
+```
+http://192.168.33.10/test.php にアクセスし、PHP情報が表示されればOKです。**TODO:せっかくだからここの手順も自動化したいですね!!**
+
 ## TODO
-- PHP の動作確認 (優先度高)
-- projectに応じたカスタマイズ
-- serverspec まあ…余裕があれば…
+- できた環境に git から本物っぽい PHP プロジェクトを取り込んで動かし、改修するところまでやってみたい
+- ユースケースに応じて、playbook.yml のパターンをいくつか考えてみたい
 
 ## 作成者
 Naoko Yamazaki <yamazaki.n@opst.co.jp>
@@ -171,4 +183,3 @@ Naoko Yamazaki <yamazaki.n@opst.co.jp>
 - Ansible公式 http://docs.ansible.com/intro_getting_started.html
 - Ansibleチュートリアル http://yteraoka.github.io/ansible-tutorial/
 - YAMLの文法 http://magazine.rubyist.net/?0009-YAML
-
