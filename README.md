@@ -170,11 +170,13 @@ sudo vi /var/www/html/test.php
 ```
 sudo chown apache:apache /var/www/html/test.php
 ```
-http://192.168.33.10/test.php にアクセスし、PHP情報が表示されればOKです。**TODO:せっかくだからここの手順も自動化したいですね!!**
+http://192.168.33.10/test.php にアクセスし、PHP情報が表示されればOKです。
 
 ## TODO
 - できた環境に git から本物っぽい PHP プロジェクトを取り込んで動かし、改修するところまでやってみたい
 - ユースケースに応じて、playbook.yml のパターンをいくつか考えてみたい
+- 社内で Ansible 経験のある人にみせてツッコミもらうのもいいかも
+- せっかくだから動作確認の手順も自動化したいですね!! serverspecとか使えばできるのかな
 
 ## 作成者
 Naoko Yamazaki <yamazaki.n@opst.co.jp>
