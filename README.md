@@ -16,9 +16,9 @@ Mac 上に Ansible + Vagrant で LAMP 開発環境をつくります。
 - Javaなど他言語の開発環境の作り方
 
 ## 手順
-Virtualboxをインストールします。（brew caskから入れたほうがよい？）
+Virtualboxをインストールします。
 
-Vagrantをインストールします。（brew caskから入れたほうがよい？）
+Vagrantをインストールします。
 https://www.vagrantup.com/downloads.html
 
 Homebrew をインストールします。Xcode のインストールを要求されるかもしれません、その場合 App Store 等からダウンロードしてインストールしてください。
@@ -173,10 +173,16 @@ sudo chown apache:apache /var/www/html/test.php
 http://192.168.33.10/test.php にアクセスし、PHP情報が表示されればOKです。
 
 ## TODO
+
+### 優先度高め
+- php.ini など設定ファイルをテンプレートで更新できるようにする
+- Role で Playbook を分割しましょう
+- せっかくだから動作確認の手順も自動化したいですね!! serverspecとか使えばできるのかな
+
+### 優先度ふつう
 - できた環境に git から本物っぽい PHP プロジェクトを取り込んで動かし、改修するところまでやってみたい
 - ユースケースに応じて、playbook.yml のパターンをいくつか考えてみたい
 - 社内で Ansible 経験のある人にみせてツッコミもらうのもいいかも
-- せっかくだから動作確認の手順も自動化したいですね!! serverspecとか使えばできるのかな
 
 ## 作成者
 Naoko Yamazaki <yamazaki.n@opst.co.jp>
@@ -185,3 +191,4 @@ Naoko Yamazaki <yamazaki.n@opst.co.jp>
 - Ansible公式 http://docs.ansible.com/intro_getting_started.html
 - Ansibleチュートリアル http://yteraoka.github.io/ansible-tutorial/
 - YAMLの文法 http://magazine.rubyist.net/?0009-YAML
+- 集合知 http://www.google.co.jp
