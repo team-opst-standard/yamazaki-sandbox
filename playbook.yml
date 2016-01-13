@@ -7,7 +7,7 @@
     # 変数を設定できます
     mysql_root_password: "hogehoge" # MySQL root パスワード
   tasks:
-    #  
+    #  コメントです！！！！
     - name: iptables stopped
       service: name=iptables state=stopped
     # CentOS 6.6 で yum が使えない不具合を直すパッチです
