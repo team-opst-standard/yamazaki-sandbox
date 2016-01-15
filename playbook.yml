@@ -1,7 +1,7 @@
 #
 # Ansible Playbook (for LAMP)
 #
-# 変更を加えます！！！！！！！！！！
+# 変更を加えます！！！！！！！!
 - hosts: dev-servers
   sudo: yes
   vars:
